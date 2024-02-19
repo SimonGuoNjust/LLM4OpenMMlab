@@ -50,8 +50,8 @@ def get_text(dir_path):
     return docs
 
 # 目标文件夹
-tar_dirs = os.listdir("/root/data/openmmlab")
-tar_dir = [os.path.join("/root/data/openmmlab", p) for p in tar_dirs if p.starts.with("mm")]
+tar_dirs = os.listdir(".")
+tar_dir = [p for p in tar_dirs if p.starts.with("mm")]
 # tar_dir = [
 #     "/root/data/InternLM",
 #     "/root/data/InternLM-XComposer",
@@ -60,6 +60,9 @@ tar_dir = [os.path.join("/root/data/openmmlab", p) for p in tar_dirs if p.starts
 #     "/root/data/opencompass",
 #     "/root/data/xtuner"
 # ]
+os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
+    # 下载模型
+os.system('huggingface-cli download --resume-download sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 --local-dir sentence-transformer')
 
 # 加载目标文件
 docs = []
@@ -72,7 +75,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 split_docs = text_splitter.split_documents(docs)
 
 # 加载开源词向量模型
-embeddings = HuggingFaceEmbeddings(model_name="/root/data/model/sentence-transformer")
+embeddings = HuggingFaceEmbeddings(model_name="sentence-transformer")
 
 # 构建向量数据库
 # 定义持久化路径
