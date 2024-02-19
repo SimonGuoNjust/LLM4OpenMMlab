@@ -50,8 +50,18 @@ def get_text(dir_path):
     return docs
 
 # 目标文件夹
-tar_dirs = os.listdir(".")
-tar_dir = [p for p in tar_dirs if p.starts.with("mm")]
+tar_dir = [
+    "mmcv",
+    "mmyolo",
+    "mmdetection",
+    "mmdetection3d",
+    "mmengine",
+    "mmocr",
+    "mmsegmentation",
+    "mmhuman3d",
+    "mmrotate",
+    "mmediting",
+]
 # tar_dir = [
 #     "/root/data/InternLM",
 #     "/root/data/InternLM-XComposer",
