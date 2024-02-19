@@ -1,5 +1,6 @@
 from qaChain import Model_center
 import gradio as gr
+from modelscope import snapshot_download
 
 def init():
     model_dir = snapshot_download('Shanghai_AI_Laboratory/internlm-chat-7b'
